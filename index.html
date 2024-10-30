@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Efficiently manage, track, and resolve project tasks with the Jira Ticket Manager. Perfect for teams looking to streamline workflows and enhance collaboration."
+    />
+    <meta
+      name="keywords"
+      content="Jira, ticket manager, project management, task tracking, workflow, collaboration, team management, issue tracking"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Kunal" />
+    <meta name="language" content="English" />
+    <title>My-Jira Ticket Manager</title>
+
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__color-group">
+        <div class="header__color pink"></div>
+        <div class="header__color blue"></div>
+        <div class="header__color green"></div>
+        <div class="header__color black"></div>
+      </div>
+
+      <div class="header__action-group">
+        <div class="header__action header__action--add">
+          <i class="bx bx-plus"></i>
+        </div>
+        <div class="header__action header__action--delete">
+          <i class="bx bx-x"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="wrapper">
+        <div class="card">
+          <div class="card__desc">
+            <textarea placeholder="Enter the title and description of your task!!"></textarea>
+          </div>
+          <div class="card__color-group">
+            <div class="card__color pink"></div>
+            <div class="card__color blue"></div>
+            <div class="card__color green"></div>
+            <div class="card__color black"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div class="empty">No tasks yet!!</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
