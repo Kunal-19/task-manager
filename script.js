@@ -7,6 +7,12 @@ const wrapper = document.querySelectorAll(".wrapper");
 const emptyMessage = wrapper[1].querySelector(".empty");
 const clrGroup = document.querySelectorAll(".header__color");
 const cardClrGroup = document.querySelectorAll(".card__color");
+const clrMap = {
+    "pink": 0,
+    "blue": 1,
+    "green": 2,
+    "black": 3,
+}
 
 const borderColor = "3px solid rgb(65,65,65)";
 let isDeleteMode = false;
@@ -96,7 +102,6 @@ const createTask = (tokenId, taskDesc, taskColor) => {
 
     task.setAttribute("id", tokenId);
     task.classList.add("task-content", taskColor);
-    // task.classList.add("task-content", currCardClr?.classList[1] || "default-color");
     taskId.classList.add("task-content__id");
     taskDescDiv.classList.add("task-content__desc");
     taskId.textContent = `#${tokenId}`;
@@ -106,12 +111,17 @@ const createTask = (tokenId, taskDesc, taskColor) => {
 
     // Deletion logic when in delete mode
     task.addEventListener("click", () => {
-        if (isDeleteMode && confirm("Are you sure you want to delete this task?")) {
-            task.remove();
-            toggleEmptyMessage();
-            saveTasks(); // Save after deletion for persistence
+        console.log("Task clicked"); // Confirm event listener assignment
+        console.log("Delete Mode:", isDeleteMode);
+        if (isDeleteMode) {
+            if (confirm("Are you sure you want to delete this task?")) {
+                task.remove();
+                toggleEmptyMessage();
+                saveTasks(); // Save after deletion for persistence
+            }
         }
     });
+    console.log("Event listener added to task with ID:", tokenId);
 
     // Hide the empty message if there's at least one task
     wrapper[1].querySelector(".empty").style.display = "none";
@@ -119,23 +129,23 @@ const createTask = (tokenId, taskDesc, taskColor) => {
 };
 
 // Event Handlers
+// Toggle Add and Delete button classes instead of inline styles
 addBtn.addEventListener("click", (event) => {
     event.preventDefault();
     if (isDeleteMode) toggleDeleteMode(isDeleteMode = false);
 
+    addBtn.classList.toggle("active");
+    delBtn.classList.remove("active"); // Ensure the delete button is not active
+
     toggleCardVisibility(card.style.visibility === "hidden" || !card.style.visibility);
     resetTasksVisibility(true);
-
-    if (currHeaderClr) {
-        applyBorder(currHeaderClr, false);
-        currHeaderClr = null;
-    }
-
-    currCardClr = toggleColorMode(currCardClr, cardClrGroup[cardClrGroup.length - 1]);
 });
 
 delBtn.addEventListener("click", (event) => {
     event.preventDefault();
+    addBtn.classList.remove("active"); // Ensure the add button is not active
+    delBtn.classList.toggle("active");
+
     toggleCardVisibility(false);
     toggleDeleteMode(isDeleteMode = !isDeleteMode);
 });
