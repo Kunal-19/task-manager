@@ -7,12 +7,6 @@ const wrapper = document.querySelectorAll(".wrapper");
 const emptyMessage = wrapper[1].querySelector(".empty");
 const clrGroup = document.querySelectorAll(".header__color");
 const cardClrGroup = document.querySelectorAll(".card__color");
-const clrMap = {
-    "pink": 0,
-    "blue": 1,
-    "green": 2,
-    "black": 3,
-}
 
 const borderColor = "3px solid rgb(65,65,65)";
 let isDeleteMode = false;
@@ -111,12 +105,10 @@ const createTask = (tokenId, taskDesc, taskColor) => {
 
     // Deletion logic when in delete mode
     task.addEventListener("click", () => {
-        if (isDeleteMode) {
-            if (confirm("Are you sure you want to delete this task?")) {
-                task.remove();
-                toggleEmptyMessage();
-                saveTasks(); // Save after deletion for persistence
-            }
+        if (isDeleteMode && confirm("Are you sure you want to delete this task?")) {
+            task.remove();
+            toggleEmptyMessage();
+            saveTasks(); // Save after deletion for persistence
         }
     });
 
