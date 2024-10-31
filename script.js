@@ -111,8 +111,6 @@ const createTask = (tokenId, taskDesc, taskColor) => {
 
     // Deletion logic when in delete mode
     task.addEventListener("click", () => {
-        console.log("Task clicked"); // Confirm event listener assignment
-        console.log("Delete Mode:", isDeleteMode);
         if (isDeleteMode) {
             if (confirm("Are you sure you want to delete this task?")) {
                 task.remove();
@@ -121,7 +119,6 @@ const createTask = (tokenId, taskDesc, taskColor) => {
             }
         }
     });
-    console.log("Event listener added to task with ID:", tokenId);
 
     // Hide the empty message if there's at least one task
     wrapper[1].querySelector(".empty").style.display = "none";
